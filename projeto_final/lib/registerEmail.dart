@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/removeEmail.dart';
 
 class RegisterEmail extends StatelessWidget {
 
@@ -13,13 +14,16 @@ class RegisterEmail extends StatelessWidget {
                 return IconButton(
                   icon: Icon(Icons.arrow_back),
                   onPressed: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RemoveEmail())
+                    );
                   },
                 );
               }),
           title: Text("Register e-mail"),
         ),
-        body: Padding(
+        body: Container(
           padding: EdgeInsets.all(20),
           child: Center (
             child: Column(
@@ -30,7 +34,8 @@ class RegisterEmail extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 15),
                   child: TextFormField(
                     decoration: InputDecoration(
-                        labelText: 'Enter your name'
+                        labelText: 'Enter your name',
+                        contentPadding: EdgeInsets.all(10),
                     ),
                   )
                 ),
@@ -38,7 +43,8 @@ class RegisterEmail extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 15),
                     child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: 'Enter your e-mail'
+                          labelText: 'Enter your e-mail',
+                          contentPadding: EdgeInsets.all(10),
                       ),
                     )
                 ),
@@ -46,7 +52,8 @@ class RegisterEmail extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 15),
                     child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: 'Enter your phone number'
+                          labelText: 'Enter your phone number',
+                          contentPadding: EdgeInsets.all(10),
                       ),
                     )
                 ),
