@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class RemoveEmail extends StatelessWidget {
+class Options extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
         leading: Builder(
@@ -13,11 +13,11 @@ class RemoveEmail extends StatelessWidget {
                 color: Colors.white,
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, '/options');
+                  Navigator.popAndPushNamed(context, '/home');
                 },
               );
             }),
-        title: Text("Remove e-mail"),
+        title: Text("Options"),
         textTheme: Theme.of(context).textTheme.apply(
             bodyColor: Colors.white,
             displayColor: Colors.white
@@ -30,26 +30,32 @@ class RemoveEmail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Container (
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Enter your e-mail',
-                      contentPadding: EdgeInsets.all(10),
-                    ),
-                  )
-              ),
-              Container(
+              new Container(
                   margin: EdgeInsets.only(top: 10),
                   child: FlatButton(
                     color: Colors.cyan,
                     textColor: Colors.white,
                     padding: EdgeInsets.all(15),
                     onPressed: () {
-                      /*...*/
+                      Navigator.popAndPushNamed(context, '/registeremail');
                     },
                     child: Text(
-                      "Remove",
+                      "Register e-mail",
+                      style: TextStyle(fontSize: 17),
+                    ),
+                  )
+              ),
+              new Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: FlatButton(
+                    color: Colors.cyan,
+                    textColor: Colors.white,
+                    padding: EdgeInsets.all(15),
+                    onPressed: () {
+                      Navigator.popAndPushNamed(context, '/removeemail');
+                    },
+                    child: Text(
+                      "Remove e-mail",
                       style: TextStyle(fontSize: 17),
                     ),
                   )
