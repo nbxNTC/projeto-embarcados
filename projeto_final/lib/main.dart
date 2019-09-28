@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/cadastraEmails.dart';
 
-void main() => runApp(CadastraEmail());
+void main() => runApp(RegisterEmail());
 
 class EmbarcadosApp extends StatelessWidget {
 

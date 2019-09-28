@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CadastraEmail extends StatelessWidget {
+class RegisterEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +17,54 @@ class CadastraEmail extends StatelessWidget {
                   },
                 );
               }),
-          title: Text("Cadastrar e-mail"),
+          title: Text("Register e-mail"),
         ),
         body: Padding(
           padding: EdgeInsets.all(20),
           child: Center (
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text("VOCE"),
+                Container (
+                  margin: EdgeInsets.only(bottom: 15),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'Enter your name'
+                    ),
+                  )
+                ),
+                Container (
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          labelText: 'Enter your e-mail'
+                      ),
+                    )
+                ),
+                Container (
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          labelText: 'Enter your phone number'
+                      ),
+                    )
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: FlatButton(
+                    color: Colors.cyan,
+                    textColor: Colors.white,
+                    padding: EdgeInsets.all(15),
+                    onPressed: () {
+                      /*...*/
+                    },
+                    child: Text(
+                      "Register",
+                      style: TextStyle(fontSize: 17),
+                    ),
+                  )
+                )
               ],
             ),
           ),
