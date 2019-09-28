@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/home.dart';
 import 'package:projeto_final/registerEmail.dart';
 
 class RemoveEmail extends StatelessWidget {
@@ -14,7 +15,10 @@ class RemoveEmail extends StatelessWidget {
                 return IconButton(
                   icon: Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen())
+                    );
                   },
                 );
               }),

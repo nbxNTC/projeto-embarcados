@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/home.dart';
 import 'package:projeto_final/removeEmail.dart';
 
 class RegisterEmail extends StatelessWidget {
@@ -16,7 +17,7 @@ class RegisterEmail extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RemoveEmail())
+                        MaterialPageRoute(builder: (context) => HomeScreen())
                     );
                   },
                 );
