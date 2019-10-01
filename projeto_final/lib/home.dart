@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold (
@@ -13,7 +12,6 @@ class Home extends StatelessWidget {
                 color: Colors.white,
                 icon: Icon(Icons.home),
                 onPressed: () {
-
                 },
               );
             }),
@@ -23,56 +21,10 @@ class Home extends StatelessWidget {
           displayColor: Colors.white
         ),
       ),
-      body: Container(
+      body: Padding(
         padding: EdgeInsets.all(20),
-        child: Center (
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              iconSize: 35,
-              icon: Icon(Icons.image),
-              onPressed: () {
-                //Navigator.pushNamed(context, '/nomeDaRota');
-              },
-            ),
-            IconButton(
-              iconSize: 35,
-              icon: Icon(Icons.airplay),
-              onPressed: () {
-                //Navigator.pushNamed(context, '/nomeDaRota');
-              },
-            ),
-
-            IconButton(
-              iconSize: 35,
-              icon: Icon(Icons.volume_off),
-              onPressed: () {
-                //Navigator.pushNamed(context, '/nomeDaRota');
-              },
-            ),
-            IconButton(
-              iconSize: 35,
-              icon: Icon(Icons.filter_vintage),
-              onPressed: () {
-                Navigator.pushNamed(context, '/options');
-              },
-            ),
-          ],
-        ),
-      ),
+        
+      ),      
     );
   }
-
 }
