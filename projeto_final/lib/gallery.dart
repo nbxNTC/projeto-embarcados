@@ -22,20 +22,25 @@ class Gallery extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          crossAxisCount: 2,        
+          crossAxisCount: 2,
           children: <Widget>[
             Padding (
               padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/1.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
+              child: GestureDetector (
+                onTap: (){ 
+                  Navigator.of(context).pushNamed('/example');
+                },
+                child: DecoratedBox (                             
+                  decoration: BoxDecoration(
+                    image: DecorationImage (
+                      image: AssetImage('assets/1.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                    color: Colors.black,
+                    shape: BoxShape.rectangle,
+                  ),                                           
+                )
+              )           
             ),
             Padding (
               padding: const EdgeInsets.all(8),              
@@ -56,6 +61,71 @@ class Gallery extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage (
                     image: AssetImage('assets/3.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  color: Colors.black,
+                  shape: BoxShape.rectangle,
+                ),                                           
+              )              
+            ),
+            Padding (
+              padding: const EdgeInsets.all(8),              
+              child: DecoratedBox (
+                decoration: BoxDecoration(
+                  image: DecorationImage (
+                    image: AssetImage('assets/4.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  color: Colors.black,
+                  shape: BoxShape.rectangle,
+                ),                                           
+              )              
+            ),
+            Padding (
+              padding: const EdgeInsets.all(8),              
+              child: DecoratedBox (
+                decoration: BoxDecoration(
+                  image: DecorationImage (
+                    image: AssetImage('assets/4.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  color: Colors.black,
+                  shape: BoxShape.rectangle,
+                ),                                           
+              )              
+            ),
+            Padding (
+              padding: const EdgeInsets.all(8),              
+              child: DecoratedBox (
+                decoration: BoxDecoration(
+                  image: DecorationImage (
+                    image: AssetImage('assets/4.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  color: Colors.black,
+                  shape: BoxShape.rectangle,
+                ),                                           
+              )              
+            ),
+            Padding (
+              padding: const EdgeInsets.all(8),              
+              child: DecoratedBox (
+                decoration: BoxDecoration(
+                  image: DecorationImage (
+                    image: AssetImage('assets/4.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  color: Colors.black,
+                  shape: BoxShape.rectangle,
+                ),                                           
+              )              
+            ),
+            Padding (
+              padding: const EdgeInsets.all(8),              
+              child: DecoratedBox (
+                decoration: BoxDecoration(
+                  image: DecorationImage (
+                    image: AssetImage('assets/4.jpg'),
                     fit: BoxFit.cover,
                   ),
                   color: Colors.black,

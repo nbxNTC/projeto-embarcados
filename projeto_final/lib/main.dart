@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/example.dart';
 import 'package:projeto_final/gallery.dart';
 import 'home.dart';
 import 'options.dart';
 import 'registerEmail.dart';
 import 'removeEmail.dart';
 import 'gallery.dart';
+import 'example.dart';
 
 
 void main() => runApp(
@@ -22,6 +24,7 @@ void main() => runApp(
     routes: <String, WidgetBuilder> {
         '/': (BuildContext context) => MyTabs(),
         '/registeremail' : (BuildContext context) => RegisterEmail(),
+        '/example' : (BuildContext context) => Example(),
         '/removeemail' : (BuildContext context) => RemoveEmail(),        
       },
     debugShowCheckedModeBanner: false,
