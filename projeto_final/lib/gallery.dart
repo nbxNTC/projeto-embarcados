@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'imageData.dart';
+import 'imageDetail.dart';
 
 class Gallery extends StatelessWidget {
+  final List<ImageData> imageList = [
+    ImageData(DateTime.now(), 'assets/1.jpg'),
+    ImageData(DateTime.now(), 'assets/2.jpg'),
+    ImageData(DateTime.now(), 'assets/3.jpg'),
+    ImageData(DateTime.now(), 'assets/4.jpg')
+  ];  
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,143 +22,45 @@ class Gallery extends StatelessWidget {
             icon: Icon(Icons.image),
             onPressed: () {},
           );
-        }),
+        }),        
         title: Text("Gallery"),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: GestureDetector (
-                onTap: (){ 
-                  Navigator.of(context).pushNamed('/example');
-                },
-                child: DecoratedBox (                             
-                  decoration: BoxDecoration(
-                    image: DecorationImage (
-                      image: AssetImage('assets/1.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                    color: Colors.black,
-                    shape: BoxShape.rectangle,
-                  ),                                           
+      body: ListView.builder(                  
+        itemCount: imageList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            contentPadding: EdgeInsets.all(10),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage(imageList[index].imagePath),
+              radius: 30,
+            ),
+            title: Text('Picture ' + (index + 1).toString()),
+            subtitle: Row(
+              children: <Widget>[
+                Icon(Icons.calendar_today, size: 15, color: Colors.grey,),                
+                Text(
+                  '  ' +
+                  imageList[index].imageTime.day.toString() + '-' +
+                  imageList[index].imageTime.month.toString() + '-' +
+                  imageList[index].imageTime.year.toString() + '   '
+                ),
+                Icon(Icons.access_time, size: 15, color: Colors.grey,),                
+                Text(
+                  '  ' +
+                  imageList[index].imageTime.hour.toString() + 'hrs' +
+                  imageList[index].imageTime.minute.toString() + 'min'  
                 )
-              )           
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/2.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              ),                         
-            ),            
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/3.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/4.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/4.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/4.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/4.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/4.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-            Padding (
-              padding: const EdgeInsets.all(8),              
-              child: DecoratedBox (
-                decoration: BoxDecoration(
-                  image: DecorationImage (
-                    image: AssetImage('assets/4.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                  color: Colors.black,
-                  shape: BoxShape.rectangle,
-                ),                                           
-              )              
-            ),
-          ],
-        ),
-      ),
+              ],
+            ),   
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ImageDetail(imageData: imageList[index],)),
+              );
+            },
+          );          
+        }        
+      ),      
     );
   }
 }

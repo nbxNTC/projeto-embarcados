@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/example.dart';
-import 'package:projeto_final/gallery.dart';
+import 'imageDetail.dart';
 import 'home.dart';
 import 'options.dart';
 import 'registerEmail.dart';
 import 'removeEmail.dart';
 import 'gallery.dart';
-import 'example.dart';
+import 'liveCam.dart';
 
 
 void main() => runApp(
@@ -24,8 +23,8 @@ void main() => runApp(
     routes: <String, WidgetBuilder> {
         '/': (BuildContext context) => MyTabs(),
         '/registeremail' : (BuildContext context) => RegisterEmail(),
-        '/example' : (BuildContext context) => Example(),
         '/removeemail' : (BuildContext context) => RemoveEmail(),        
+        '/imagedetail' : (BuildContext context) => ImageDetail(),
       },
     debugShowCheckedModeBanner: false,
   )
@@ -43,7 +42,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = TabController(vsync: this, length: 3);
+    controller = TabController(vsync: this, length: 4);
   }
 
   @override
@@ -62,6 +61,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
           tabs: <Tab>[
             Tab(icon: Icon(Icons.home, color: Colors.white)),
             Tab(icon: Icon(Icons.image, color: Colors.white)),
+            Tab(icon: Icon(Icons.live_tv, color: Colors.white)),
             Tab(icon: Icon(Icons.settings, color: Colors.white)),
           ],
         )
@@ -71,6 +71,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
         children: <Widget>[
           Home(),
           Gallery(),
+          LiveCam(),
           Options()
         ],
       ),
