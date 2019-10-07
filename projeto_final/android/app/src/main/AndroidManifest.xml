@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projeto_final">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.projeto_final">    
     
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -31,4 +32,8 @@
         </activity>
     </application>    
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-sdk tools:overrideLibrary="io.github.edufolly.flutterbluetoothserial"/>
+    <uses-sdk android:minSdkVersion="18" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 </manifest>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'selectDevice.dart';
 import 'imageDetail.dart';
 import 'home.dart';
 import 'options.dart';
@@ -6,7 +7,6 @@ import 'registerEmail.dart';
 import 'removeEmail.dart';
 import 'gallery.dart';
 import 'liveCam.dart';
-
 
 void main() => runApp(
   MaterialApp(
@@ -25,6 +25,7 @@ void main() => runApp(
         '/registeremail' : (BuildContext context) => RegisterEmail(),
         '/removeemail' : (BuildContext context) => RemoveEmail(),        
         '/imagedetail' : (BuildContext context) => ImageDetail(),
+        '/selectdevice' : (BuildContext context) => SelectDevice(),
       },
     debugShowCheckedModeBanner: false,
   )

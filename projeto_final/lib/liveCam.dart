@@ -67,12 +67,11 @@ class VideoState extends State<LiveCam> {
               playerController.play();
           });
         },
-        child: Icon(playerController.value.isPlaying ? Icons.pause : Icons.play_arrow),
+        child: Icon(
+          playerController.value.isPlaying ? Icons.pause : Icons.play_arrow, 
+          color: Colors.white,
+        ),
       ),      
     );
   }
 }
-
-/*
-
- */

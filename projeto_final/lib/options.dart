@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Options extends StatelessWidget {
+class Options extends StatelessWidget {  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +46,19 @@ class Options extends StatelessWidget {
                 style: TextStyle(fontSize: 17),
               ),
             ),
+            SizedBox(height: 20),
+            FlatButton(
+              color: Colors.cyan,
+              textColor: Colors.white,
+              padding: EdgeInsets.all(15),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/selectdevice');
+              },
+              child: Text(
+                "Bluetooth",
+                style: TextStyle(fontSize: 17),
+              ),
+            ),            
           ],
         ),
       ),
