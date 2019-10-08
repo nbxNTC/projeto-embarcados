@@ -26,10 +26,36 @@ class Options extends StatelessWidget {
               textColor: Colors.white,
               padding: EdgeInsets.all(15),
               onPressed: () {
+                Navigator.of(context).pushNamed('/selectdevice');
+              },
+              child: Text(
+                "Connect Bluetooth",
+                style: TextStyle(fontSize: 17),
+              ),
+            ),            
+            SizedBox(height: 20),
+            FlatButton(
+              color: Colors.cyan,
+              textColor: Colors.white,
+              padding: EdgeInsets.all(15),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/esp32wifi');
+              },
+              child: Text(
+                "Configure Wi-Fi ESP32",
+                style: TextStyle(fontSize: 17),
+              ),
+            ),  
+            SizedBox(height: 20),
+            FlatButton(
+              color: Colors.cyan,
+              textColor: Colors.white,
+              padding: EdgeInsets.all(15),
+              onPressed: () {
                 Navigator.of(context).pushNamed('/registeremail');
               },
               child: Text(
-                "Register e-mail",
+                "Register E-mail",
                 style: TextStyle(fontSize: 17),
               ),
             ),
@@ -42,23 +68,10 @@ class Options extends StatelessWidget {
                 Navigator.of(context).pushNamed('/removeemail');
               },
               child: Text(
-                "Remove e-mail",
+                "Remove E-mail",
                 style: TextStyle(fontSize: 17),
               ),
             ),
-            SizedBox(height: 20),
-            FlatButton(
-              color: Colors.cyan,
-              textColor: Colors.white,
-              padding: EdgeInsets.all(15),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/selectdevice');
-              },
-              child: Text(
-                "Bluetooth",
-                style: TextStyle(fontSize: 17),
-              ),
-            ),            
           ],
         ),
       ),

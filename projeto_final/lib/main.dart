@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/esp32wifi.dart';
 import 'selectDevice.dart';
 import 'imageDetail.dart';
 import 'home.dart';
@@ -26,6 +27,7 @@ void main() => runApp(
         '/removeemail' : (BuildContext context) => RemoveEmail(),        
         '/imagedetail' : (BuildContext context) => ImageDetail(),
         '/selectdevice' : (BuildContext context) => SelectDevice(),
+        '/esp32wifi' : (BuildContext context) => Esp32Wifi(),
       },
     debugShowCheckedModeBanner: false,
   )
