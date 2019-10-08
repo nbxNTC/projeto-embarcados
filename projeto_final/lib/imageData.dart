@@ -1,4 +1,3 @@
-
 class ImageData {
 
   final DateTime imageTime;
