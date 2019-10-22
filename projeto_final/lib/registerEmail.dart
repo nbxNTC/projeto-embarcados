@@ -1,11 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterEmail extends StatelessWidget {
+class RegisterEmail extends StatefulWidget {
+  @override
+  RegisterEmailState createState() => RegisterEmailState();
+}
 
-  TextEditingController nameController;
-  TextEditingController emailController;
-  TextEditingController numberController;
+class RegisterEmailState extends State<RegisterEmail> {
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final numberController = TextEditingController();
+
+  String nameBuffer;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    nameController.dispose();
+    emailController.dispose();
+    numberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +36,7 @@ class RegisterEmail extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.cyan,
         iconTheme: IconThemeData(color: Colors.white),
-        title: Text("Register e-mail"),        
+        title: Text("Register e-mail"),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),        
@@ -22,11 +45,15 @@ class RegisterEmail extends StatelessWidget {
             Padding (
               padding	: EdgeInsets.only(bottom: 15),
               child: TextField(
+                autofocus: true,
                 controller: nameController,
                 decoration: InputDecoration(
                     labelText: 'Enter your name',
                     contentPadding: EdgeInsets.all(10),
                 ),
+                onSubmitted: (text) {
+                  nameController.text = text;
+                },
               )
             ),
             Padding (
@@ -37,6 +64,9 @@ class RegisterEmail extends StatelessWidget {
                       labelText: 'Enter your e-mail',
                       contentPadding: EdgeInsets.all(10),
                   ),
+                  onSubmitted: (text) {
+                    emailController.text = text;
+                  },
                 )
             ),
             Padding (
@@ -47,13 +77,15 @@ class RegisterEmail extends StatelessWidget {
                       labelText: 'Enter your phone number',
                       contentPadding: EdgeInsets.all(10),
                   ),
+                  onSubmitted: (text) {
+                    numberController.text = text;
+                  },
                 )
             ),
             Padding(
               padding: EdgeInsets.only(top: 10),
-              child: FlatButton(
+              child: CupertinoButton(
                 color: Colors.cyan,
-                textColor: Colors.white,
                 padding: EdgeInsets.all(15),
                 onPressed: () {
                   if (nameController.text.isNotEmpty &&
@@ -64,19 +96,56 @@ class RegisterEmail extends StatelessWidget {
                       'email': emailController.text,
                       'number': numberController.text
                     });
+                    nameBuffer = nameController.text;
+                    nameController.text = '';
+                    numberController.text = '';
+                    emailController.text = '';
+
+                    return showCupertinoDialog(
+                      context: context,
+                      builder: (context) {
+                        return CupertinoAlertDialog(
+                          title: Text("Notification"),
+                          content: Text("Thanks for register your e-mail, " + nameBuffer + "."),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Close'),
+                              onPressed:() {
+                                Navigator.pop(context);
+                              },
+                            )
+                          ],
+                        );
+                      },
+                    );
                   }
-                  return showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        content: Text(numberController.text),
-                      );
-                    },
-                  );
+                  else {
+                    nameController.text = '';
+                    numberController.text = '';
+                    emailController.text = '';
+                    return showCupertinoDialog(
+                      context: context,
+                      builder: (context) {
+                        return CupertinoAlertDialog(
+                          title: Text("Warning"),
+                          content: Text("Sorry, try again."),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Close'),
+                              onPressed:() {
+                                Navigator.pop(context);
+                              },
+                            )
+                          ],
+                        );
+                      },
+                    );
+                  }
+                     //
                 },
                 child: Text(
                   "Register",
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(fontSize: 17, color: Colors.white),
                 ),
               )
             )

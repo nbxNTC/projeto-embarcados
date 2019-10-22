@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Esp32Wifi extends StatelessWidget {
@@ -33,16 +34,15 @@ class Esp32Wifi extends StatelessWidget {
             ),            
             Padding(
               padding: EdgeInsets.only(top: 10),
-              child: FlatButton(
+              child: CupertinoButton(
                 color: Colors.cyan,
-                textColor: Colors.white,
                 padding: EdgeInsets.all(15),
                 onPressed: () {
                   /*...*/
                 },
                 child: Text(
                   "Send",
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(fontSize: 17, color: Colors.white),
                 ),
               )
             )

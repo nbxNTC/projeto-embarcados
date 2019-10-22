@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Options extends StatelessWidget {  
@@ -21,55 +22,51 @@ class Options extends StatelessWidget {
           shrinkWrap: true,
           children: <Widget>[
             SizedBox(height: 10),
-            FlatButton(
+            CupertinoButton(
               color: Colors.cyan,
-              textColor: Colors.white,
               padding: EdgeInsets.all(15),
               onPressed: () {
                 Navigator.of(context).pushNamed('/selectdevice');
               },
               child: Text(
                 "Connect Bluetooth",
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
             ),            
             SizedBox(height: 20),
-            FlatButton(
+            CupertinoButton(
               color: Colors.cyan,
-              textColor: Colors.white,
               padding: EdgeInsets.all(15),
               onPressed: () {
                 Navigator.of(context).pushNamed('/esp32wifi');
               },
               child: Text(
                 "Configure Wi-Fi ESP32",
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
             ),  
             SizedBox(height: 20),
-            FlatButton(
+            CupertinoButton(
               color: Colors.cyan,
-              textColor: Colors.white,
               padding: EdgeInsets.all(15),
               onPressed: () {
                 Navigator.of(context).pushNamed('/registeremail');
               },
               child: Text(
                 "Register E-mail",
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
             ),
             SizedBox(height: 20),
-            FlatButton(
+            CupertinoButton(
               color: Colors.cyan,
-              textColor: Colors.white,
               padding: EdgeInsets.all(15),
               onPressed: () {
                 Navigator.of(context).pushNamed('/removeemail');
               },
               child: Text(
                 "Remove E-mail",
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: 17, color: Colors.white),
               ),
             ),
           ],
