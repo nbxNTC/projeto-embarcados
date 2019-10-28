@@ -26,25 +26,13 @@ class Options extends StatelessWidget {
               color: Colors.cyan,
               padding: EdgeInsets.all(15),
               onPressed: () {
-                Navigator.of(context).pushNamed('/selectdevice');
+                Navigator.of(context).pushNamed('/bluetooth');
               },
               child: Text(
-                "Connect Bluetooth",
+                "Configure Arduino",
                 style: TextStyle(fontSize: 17, color: Colors.white),
               ),
-            ),            
-            SizedBox(height: 20),
-            CupertinoButton(
-              color: Colors.cyan,
-              padding: EdgeInsets.all(15),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/esp32wifi');
-              },
-              child: Text(
-                "Configure Wi-Fi ESP32",
-                style: TextStyle(fontSize: 17, color: Colors.white),
-              ),
-            ),  
+            ),
             SizedBox(height: 20),
             CupertinoButton(
               color: Colors.cyan,

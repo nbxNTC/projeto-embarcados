@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/esp32wifi.dart';
 import 'selectDevice.dart';
 import 'imageDetail.dart';
 import 'home.dart';
 import 'options.dart';
 import 'registerEmail.dart';
 import 'removeEmail.dart';
-import 'gallery.dart';
 import 'liveCam.dart';
+import 'BluetoothConfiguration.dart';
 
 void main() => runApp(
   MaterialApp(
@@ -27,7 +26,7 @@ void main() => runApp(
         '/removeemail' : (BuildContext context) => RemoveEmail(),        
         '/imagedetail' : (BuildContext context) => ImageDetail(),
         '/selectdevice' : (BuildContext context) => SelectDevice(),
-        '/esp32wifi' : (BuildContext context) => Esp32Wifi(),
+        '/bluetooth' : (BuildContext context) => BluetoothConfiguration(),
       },
     debugShowCheckedModeBanner: false,
   )
@@ -45,7 +44,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = TabController(vsync: this, length: 4);
+    controller = TabController(vsync: this, length: 3);
   }
 
   @override
@@ -63,7 +62,6 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
           controller: controller,
           tabs: <Tab>[
             Tab(icon: Icon(Icons.home, color: Colors.white)),
-            Tab(icon: Icon(Icons.image, color: Colors.white)),
             Tab(icon: Icon(Icons.live_tv, color: Colors.white)),
             Tab(icon: Icon(Icons.settings, color: Colors.white)),
           ],
@@ -73,7 +71,6 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
         controller: controller,
         children: <Widget>[
           Home(),
-          Gallery(),
           LiveCam(),
           Options()
         ],
