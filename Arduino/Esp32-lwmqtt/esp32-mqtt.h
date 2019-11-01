@@ -20,9 +20,7 @@
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
 
-//#include <MQTT.h>
-//#include "PubSubClient.h"
-#include <Temboo.h>
+#include <MQTT.h>
 
 #include <CloudIoTCore.h>
 #include <CloudIoTCoreMqtt.h>
@@ -87,6 +85,11 @@ void connectWifi() {
 ///////////////////////////////
 // Orchestrates various methods from preceeding code.
 ///////////////////////////////
+void test() {
+  mqtt->publishState("teste");
+  Serial.println("/devices/my-esp32-device/config");
+}
+ 
 void publishTelemetry(String data) {
   mqtt->publishTelemetry(data);
 }

@@ -36,5 +36,6 @@ void loop() {
     lastMillis = millis();
     //publishTelemetry(mqttClient, "/sensors", getDefaultSensor());
     publishTelemetry(getDefaultSensor());
+    test();
   }
 }
