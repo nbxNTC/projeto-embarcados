@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:camera/camera.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -111,7 +112,7 @@ class _ChatPage extends State<ChatPage> {
 
   void takePicture(bool isReady, String fileNameOutside) async{
     if (isReady) {
-      String fileNameStore = fileNameOutside + '.png';
+      String fileNameStore = fileNameOutside[0] + '.png';
       try {
         // Ensure that the camera is initialized.
         await _initializeControllerFuture;
@@ -131,8 +132,10 @@ class _ChatPage extends State<ChatPage> {
 
         // If the picture was taken, display it on a new screen.        
         String fileName = basename(path);
+        print("teste" + fileName);
         StorageReference firebaseStorageRef = FirebaseStorage.instance.ref().child("pictures/" + fileName);
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(File(path));
+
 
       } catch (e) {
         // If an error occurs, log the error to the console.
@@ -162,51 +165,70 @@ class _ChatPage extends State<ChatPage> {
 
     return Scaffold(
         appBar: AppBar(
+            backgroundColor: Colors.cyan,
+            iconTheme: IconThemeData(color: Colors.white),
             title: (
-                isConnecting ? Text('Connecting chat to ' + widget.server.name + '...') :
-                isConnected ? Text('Live chat with ' + widget.server.name) :
-                Text('Chat log with ' + widget.server.name)
+                isConnecting ? Text('Connecting to ' + widget.server.name + '...') :
+                isConnected ? Text('Connected with ' + widget.server.name) :
+                Text('Disconnected')
             )
         ),
         body: SafeArea(
             child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Flexible(
-                      child: ListView(
-                          padding: const EdgeInsets.all(12.0),
-                          controller: listScrollController,
-                          children: list
-                      )
-                  ),
-                  Row(
+//                  Center(
+//                    child: CircularProgressIndicator(),
+//                  ),
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Flexible(
-                            child: Container(
-                                margin: const EdgeInsets.only(left: 16.0),
-                                child: TextField(
-                                  style: const TextStyle(fontSize: 15.0),
-                                  controller: textEditingController,
-                                  decoration: InputDecoration.collapsed(
-                                    hintText: (
-                                        isConnecting ? 'Wait until connected...' :
-                                        isConnected ? 'Type your message...' :
-                                        'Chat got disconnected'
-                                    ),
-                                    hintStyle: const TextStyle(color: Colors.grey),
-                                  ),
-                                  enabled: isConnected,
-                                )
-                            )
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(8.0),
-                          child: IconButton(
-                              icon: const Icon(Icons.send),
-                              onPressed: isConnected ? () => _sendMessage(textEditingController.text) : null
-                          ),
-                        ),
-                      ]
-                  )
+
+                        Icon(Icons.camera_alt, size: 200, color: Colors.cyan),
+                        SizedBox(height: 100),
+                        CircularProgressIndicator(),
+                      ],
+                    ),
+                  ),
+
+//                  Flexible(
+//                      child: ListView(
+//                          padding: const EdgeInsets.all(12.0),
+//                          controller: listScrollController,
+//                          children: list
+//                      )
+//                  ),
+//                  Row(
+//                      children: <Widget>[
+//                        Flexible(
+//                            child: Container(
+//                                margin: const EdgeInsets.only(left: 16.0),
+//                                child: TextField(
+//                                  style: const TextStyle(fontSize: 15.0),
+//                                  controller: textEditingController,
+//                                  decoration: InputDecoration.collapsed(
+//                                    hintText: (
+//                                        isConnecting ? 'Wait until connected...' :
+//                                        isConnected ? 'Type your message...' :
+//                                        'Chat got disconnected'
+//                                    ),
+//                                    hintStyle: const TextStyle(color: Colors.grey),
+//                                  ),
+//                                  enabled: isConnected,
+//                                )
+//                            )
+//                        ),
+//                        Container(
+//                          margin: const EdgeInsets.all(8.0),
+//                          child: IconButton(
+//                              icon: const Icon(Icons.send),
+//                              onPressed: isConnected ? () => _sendMessage(textEditingController.text) : null
+//                          ),
+//                        ),
+//                      ]
+//                  )
                 ]
             )
         )
@@ -242,7 +264,7 @@ class _ChatPage extends State<ChatPage> {
 
     // Create message if there is new line character
     String dataString = String.fromCharCodes(buffer);
-    takePicture(true, dataString);
+    takePicture(true, dataString[0]);
     int index = buffer.indexOf(13);
     if (~index != 0) { // \r\n
       setState(() {

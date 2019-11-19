@@ -21,19 +21,19 @@ class Options extends StatelessWidget {
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
+//            SizedBox(height: 10),
+//            CupertinoButton(
+//              color: Colors.cyan,
+//              padding: EdgeInsets.all(15),
+//              onPressed: () {
+//                Navigator.of(context).pushNamed('/bluetooth');
+//              },
+//              child: Text(
+//                "Configure Arduino",
+//                style: TextStyle(fontSize: 17, color: Colors.white),
+//              ),
+//            ),
             SizedBox(height: 10),
-            CupertinoButton(
-              color: Colors.cyan,
-              padding: EdgeInsets.all(15),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/bluetooth');
-              },
-              child: Text(
-                "Configure Arduino",
-                style: TextStyle(fontSize: 17, color: Colors.white),
-              ),
-            ),
-            SizedBox(height: 20),
             CupertinoButton(
               color: Colors.cyan,
               padding: EdgeInsets.all(15),

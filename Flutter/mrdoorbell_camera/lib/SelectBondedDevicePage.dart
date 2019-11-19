@@ -105,6 +105,8 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
     )).toList();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.cyan,
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text('Select device'),
         actions: <Widget>[
           (

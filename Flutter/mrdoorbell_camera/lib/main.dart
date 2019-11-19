@@ -16,14 +16,24 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      theme: ThemeData.dark(),
-//      home: TakePictureScreen(
-//        // Pass the appropriate camera to the TakePictureScreen widget.
-//        camera: firstCamera,
-//      ),
-        home: MainPage(
+//      theme: ThemeData.dark(),
+////      home: TakePictureScreen(
+////        // Pass the appropriate camera to the TakePictureScreen widget.
+////        camera: firstCamera,
+////      ),
+      theme: ThemeData(
+        primarySwatch: Colors.cyan,
+        iconTheme: IconThemeData(color: Colors.white),
+        primaryTextTheme: TextTheme(
+          title: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      home: MainPage(
           camera: firstCamera,
         ),
+      debugShowCheckedModeBanner: false,
     ),
   );
 }

@@ -62,7 +62,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
           controller: controller,
           tabs: <Tab>[
             Tab(icon: Icon(Icons.home, color: Colors.white)),
-            Tab(icon: Icon(Icons.live_tv, color: Colors.white)),
+            Tab(icon: Icon(Icons.wifi, color: Colors.white)),
             Tab(icon: Icon(Icons.settings, color: Colors.white)),
           ],
         )
@@ -71,7 +71,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
         controller: controller,
         children: <Widget>[
           Home(),
-          LiveCam(),
+          BluetoothConfiguration(),
           Options()
         ],
       ),

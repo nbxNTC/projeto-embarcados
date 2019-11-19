@@ -83,11 +83,19 @@ class _BluetoothConfiguration extends State<BluetoothConfiguration> {
       appBar: AppBar(
         backgroundColor: Colors.cyan,
         iconTheme: IconThemeData(color: Colors.white),
+        leading: Builder(builder: (BuildContext context) {
+          return IconButton(
+            color: Colors.white,
+            icon: Icon(Icons.wifi),
+            onPressed: () {},
+          );
+        }),
         title: const Text('Configure Bluetooth'),
       ),
       body: Container(
         child: ListView(
           children: <Widget>[
+            SizedBox(height: 13),
             SwitchListTile(
               title: const Text('Enable Bluetooth'),
               value: _bluetoothState.isEnabled,
@@ -104,100 +112,101 @@ class _BluetoothConfiguration extends State<BluetoothConfiguration> {
                 });
               },
             ),
-            ListTile(
-              title: const Text('Bluetooth status'),
-              subtitle: Text(_bluetoothState.toString()),
-              trailing: CupertinoButton(
-                color: Colors.cyan,
-                padding: EdgeInsets.only(top: 8, bottom: 8, left: 25, right: 25),
-                child: const Text(
-                    'Settings',
-                    style: TextStyle(fontSize: 17, color: Colors.white),
-                ),
-                onPressed: () { 
-                  FlutterBluetoothSerial.instance.openSettings();
-                },
-              ),
-            ),
-            ListTile(
-              title: const Text('Local adapter address'),
-              subtitle: Text(_address),
-            ),
-            ListTile(
-              title: const Text('Local adapter name'),
-              subtitle: Text(_name),
-              onLongPress: null,
-            ),
-            ListTile(
-              title: _discoverableTimeoutSecondsLeft == 0 ? const Text("Discoverable") : Text("Discoverable for ${_discoverableTimeoutSecondsLeft}s"),
-              subtitle: const Text("PsychoX-Luna"),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Checkbox(
-                    value: _discoverableTimeoutSecondsLeft != 0,
-                    onChanged: null,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.visibility),
-                    onPressed: () async {
-                      print('Discoverable requested');
-                      final int timeout = await FlutterBluetoothSerial.instance.requestDiscoverable(60);
-                      if (timeout < 0) {
-                        print('Discoverable mode denied');
-                      }
-                      else {
-                        print('Discoverable mode acquired for $timeout seconds');
-                      }
-                      setState(() {
-                        _discoverableTimeoutTimer?.cancel();
-                        _discoverableTimeoutSecondsLeft = timeout;
-                        _discoverableTimeoutTimer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
-                          setState(() {
-                            if (_discoverableTimeoutSecondsLeft < 0) {
-                              FlutterBluetoothSerial.instance.isDiscoverable.then((isDiscoverable) {
-                                if (isDiscoverable) {
-                                  print("Discoverable after timeout... might be infinity timeout :F");
-                                  _discoverableTimeoutSecondsLeft += 1;
-                                }
-                              });
-                              timer.cancel();
-                              _discoverableTimeoutSecondsLeft = 0;
-                            }
-                            else {
-                              _discoverableTimeoutSecondsLeft -= 1;
-                            }
-                          });
-                        });
-                      });
-                    },
-                  )
-                ]
-              )
-            ),
+//            ListTile(
+//              title: const Text('Bluetooth status'),
+//              subtitle: Text(_bluetoothState.toString()),
+//              trailing: CupertinoButton(
+//                color: Colors.cyan,
+//                padding: EdgeInsets.only(top: 8, bottom: 8, left: 25, right: 25),
+//                child: const Text(
+//                    'Settings',
+//                    style: TextStyle(fontSize: 17, color: Colors.white),
+//                ),
+//                onPressed: () {
+//                  FlutterBluetoothSerial.instance.openSettings();
+//                },
+//              ),
+//            ),
+//            ListTile(
+//              title: const Text('Local adapter address'),
+//              subtitle: Text(_address),
+//            ),
+//            ListTile(
+//              title: const Text('Local adapter name'),
+//              subtitle: Text(_name),
+//              onLongPress: null,
+//            ),
+//            ListTile(
+//              title: _discoverableTimeoutSecondsLeft == 0 ? const Text("Discoverable") : Text("Discoverable for ${_discoverableTimeoutSecondsLeft}s"),
+//              subtitle: const Text("PsychoX-Luna"),
+//              trailing: Row(
+//                mainAxisSize: MainAxisSize.min,
+//                children: [
+//                  Checkbox(
+//                    value: _discoverableTimeoutSecondsLeft != 0,
+//                    onChanged: null,
+//                  ),
+//                  IconButton(
+//                    icon: const Icon(Icons.visibility),
+//                    onPressed: () async {
+//                      print('Discoverable requested');
+//                      final int timeout = await FlutterBluetoothSerial.instance.requestDiscoverable(60);
+//                      if (timeout < 0) {
+//                        print('Discoverable mode denied');
+//                      }
+//                      else {
+//                        print('Discoverable mode acquired for $timeout seconds');
+//                      }
+//                      setState(() {
+//                        _discoverableTimeoutTimer?.cancel();
+//                        _discoverableTimeoutSecondsLeft = timeout;
+//                        _discoverableTimeoutTimer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+//                          setState(() {
+//                            if (_discoverableTimeoutSecondsLeft < 0) {
+//                              FlutterBluetoothSerial.instance.isDiscoverable.then((isDiscoverable) {
+//                                if (isDiscoverable) {
+//                                  print("Discoverable after timeout... might be infinity timeout :F");
+//                                  _discoverableTimeoutSecondsLeft += 1;
+//                                }
+//                              });
+//                              timer.cancel();
+//                              _discoverableTimeoutSecondsLeft = 0;
+//                            }
+//                            else {
+//                              _discoverableTimeoutSecondsLeft -= 1;
+//                            }
+//                          });
+//                        });
+//                      });
+//                    },
+//                  )
+//                ]
+//              )
+//            ),
             Divider(),
-            ListTile(
-              title: CupertinoButton(
-                color: Colors.cyan,
-                padding: EdgeInsets.only(top: 8, bottom: 8, left: 25, right: 25),
-                child: const Text(
-                    'Explore discovered devices',
-                    style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  final BluetoothDevice selectedDevice = await Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) { return DiscoveryPage(); })
-                  );
-
-                  if (selectedDevice != null) {
-                    print('Discovery -> selected ' + selectedDevice.address);
-                  }
-                  else {
-                    print('Discovery -> no device selected');
-                  }
-                }
-              ),
-            ),
+//            ListTile(
+//              title: CupertinoButton(
+//                color: Colors.cyan,
+//                padding: EdgeInsets.only(top: 8, bottom: 8, left: 25, right: 25),
+//                child: const Text(
+//                    'Explore discovered devices',
+//                    style: TextStyle(color: Colors.white),
+//                ),
+//                onPressed: () async {
+//                  final BluetoothDevice selectedDevice = await Navigator.of(context).push(
+//                    MaterialPageRoute(builder: (context) { return DiscoveryPage(); })
+//                  );
+//
+//                  if (selectedDevice != null) {
+//                    print('Discovery -> selected ' + selectedDevice.address);
+//                  }
+//                  else {
+//                    print('Discovery -> no device selected');
+//                  }
+//                }
+//              ),
+//            ),
+            SizedBox(height: 20),
             ListTile(
               title: CupertinoButton(
                 color: Colors.cyan,
